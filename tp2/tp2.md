@@ -129,3 +129,5 @@ https://docs.rockylinux.org/guides/cms/cloud_server_using_nextcloud
 https://www.howtoforge.com/how-to-install-nextcloud-on-rocky-linux/#installing-and-configuring-mariadb
 
 ![enter image description here](https://cdn.discordapp.com/attachments/889061317321838627/895592218298052650/error.png)
+
+
