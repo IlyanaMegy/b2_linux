@@ -123,11 +123,138 @@ start apache on boot :
 
 ## II. Une stack web plus avancée
 
-**1. Intro**
+![enter image description here](https://cdn.discordapp.com/attachments/889061317321838627/897174514557923339/itworks.png)
 
-https://docs.rockylinux.org/guides/cms/cloud_server_using_nextcloud
-https://www.howtoforge.com/how-to-install-nextcloud-on-rocky-linux/#installing-and-configuring-mariadb
+**C. Finaliser l'installation de NextCloud**
 
-![enter image description here](https://cdn.discordapp.com/attachments/889061317321838627/895592218298052650/error.png)
+    [root@web_tp2_linux httpd]# mysql -u nextcloud -h10.102.1.12 -p
+    Enter password:
+    Welcome to the MySQL monitor.  Commands end with ; or \g.
+    Your MySQL connection id is 19
+    Server version: 5.5.5-10.3.28-MariaDB MariaDB Server
+        
+    mysql> show databases;
+    +--------------------+
+    | Database           |
+    +--------------------+
+    | information_schema |
+    | nextcloud          |
+    +--------------------+
+    2 rows in set (0.01 sec)
+    
+    mysql> use nextcloud
+    Reading table information for completion of table and column names
+    You can turn off this feature to get a quicker startup with -A
+    
+    Database changed
+    mysql> show tables;
+    +-----------------------------+
+    | Tables_in_nextcloud         |
+    +-----------------------------+
+    | oc_accounts                 |
+    | oc_accounts_data            |
+    | oc_activity                 |
+    | oc_activity_mq              |
+    | oc_addressbookchanges       |
+    | oc_addressbooks             |
+    | oc_appconfig                |
+    | oc_authtoken                |
+    | oc_bruteforce_attempts      |
+    | oc_calendar_invitations     |
+    | oc_calendar_reminders       |
+    | oc_calendar_resources       |
+    | oc_calendar_resources_md    |
+    | oc_calendar_rooms           |
+    | oc_calendar_rooms_md        |
+    | oc_calendarchanges          |
+    | oc_calendarobjects          |
+    | oc_calendarobjects_props    |
+    | oc_calendars                |
+    | oc_calendarsubscriptions    |
+    | oc_cards                    |
+    | oc_cards_properties         |
+    | oc_collres_accesscache      |
+    | oc_collres_collections      |
+    | oc_collres_resources        |
+    | oc_comments                 |
+    | oc_comments_read_markers    |
+    | oc_dav_cal_proxy            |
+    | oc_dav_shares               |
+    | oc_direct_edit              |
+    | oc_directlink               |
+    | oc_federated_reshares       |
+    | oc_file_locks               |
+    | oc_filecache                |
+    | oc_filecache_extended       |
+    | oc_files_trash              |
+    | oc_flow_checks              |
+    | oc_flow_operations          |
+    | oc_flow_operations_scope    |
+    | oc_group_admin              |
+    | oc_group_user               |
+    | oc_groups                   |
+    | oc_jobs                     |
+    | oc_known_users              |
+    | oc_login_flow_v2            |
+    | oc_mail_accounts            |
+    | oc_mail_aliases             |
+    | oc_mail_attachments         |
+    | oc_mail_classifiers         |
+    | oc_mail_coll_addresses      |
+    | oc_mail_mailboxes           |
+    | oc_mail_message_tags        |
+    | oc_mail_messages            |
+    | oc_mail_provisionings       |
+    | oc_mail_recipients          |
+    | oc_mail_tags                |
+    | oc_mail_trusted_senders     |
+    | oc_migrations               |
+    | oc_mimetypes                |
+    | oc_mounts                   |
+    | oc_notifications            |
+    | oc_notifications_pushtokens |
+    | oc_oauth2_access_tokens     |
+    | oc_oauth2_clients           |
+    | oc_preferences              |
+    | oc_privacy_admins           |
+    | oc_properties               |
+    | oc_recent_contact           |
+    | oc_richdocuments_assets     |
+    | oc_richdocuments_direct     |
+    | oc_richdocuments_wopi       |
+    | oc_schedulingobjects        |
+    | oc_share                    |
+    | oc_share_external           |
+    | oc_storages                 |
+    | oc_storages_credentials     |
+    | oc_systemtag                |
+    | oc_systemtag_group          |
+    | oc_systemtag_object_mapping |
+    | oc_talk_attendees           |
+    | oc_talk_bridges             |
+    | oc_talk_commands            |
+    | oc_talk_guestnames          |
+    | oc_talk_internalsignaling   |
+    | oc_talk_rooms               |
+    | oc_talk_sessions            |
+    | oc_text_documents           |
+    | oc_text_sessions            |
+    | oc_text_steps               |
+    | oc_trusted_servers          |
+    | oc_twofactor_backupcodes    |
+    | oc_twofactor_providers      |
+    | oc_user_status              |
+    | oc_user_transfer_owner      |
+    | oc_users                    |
+    | oc_vcategory                |
+    | oc_vcategory_to_object      |
+    | oc_webauthn                 |
+    | oc_whats_new                |
+    +-----------------------------+
+    99 rows in set (0.00 sec)
+    
+    mysql> SELECT User, Host, Password FROM mysql.user;
+    ERROR 1142 (42000): SELECT command denied to user 'nextcloud'@'10.102.1.11' for table 'user'
+
 
 
